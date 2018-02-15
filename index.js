@@ -1,13 +1,71 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const path = require('path')
+const PORT = process.env.PORT || 5000
 
-mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://stangricki:password-2@ds237748.mlab.com:37748/database-2', {
     useMongoClient: true
 });
 
+
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+
+
+
+
+
+/*
+// fake posts to simulate a database
+const posts = [
+  {
+    id: 1,
+    author: 'John',
+    title: 'Templating with EJS',
+    body: 'Blog post number 1'
+  },
+  {
+    id: 2,
+    author: 'Drake',
+    title: 'Express: Starting from the Bottom',
+    body: 'Blog post number 2'
+  },
+  {
+    id: 3,
+    author: 'Emma',
+    title: 'Streams',
+    body: 'Blog post number 3'
+  },
+  {
+    id: 4,
+    author: 'Cody',
+    title: 'Events',
+    body: 'Blog post number 4'
+  }
+]
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+/*
 //new user Schema
 const userSchema = new Schema({
     name: String,
@@ -155,4 +213,4 @@ Promise.all([kenny.save(), mark.save(), benny.save()])
     .then(findMarkAndDelete)
     .then(findKennyAndDelete)
     .then(findBennyAndRemove)
-    .catch(console.log.bind(console))
+    .catch(console.log.bind(console))*/
