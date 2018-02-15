@@ -5,8 +5,11 @@
 </head>
 
 <body>
-
     <h2>Hello world</h2>
-
+		<pre>
+		<% results.forEach(function(user)  { %>
+			<%= user.name + ' ' + user.surname %>
+		<% }) %>
+		</pre>
 </body>
 </html>
