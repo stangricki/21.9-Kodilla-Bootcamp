@@ -1,26 +1,30 @@
-const express = require('express')
-var mongoose = require('mongoose');
-const path = require('path')
-const PORT = process.env.PORT || 5000
+const express = require("express");
+const mongoose = require("mongoose");
+const path = require("path");
+const PORT = process.env.PORT || 5000;
 
-mongoose.connect('mongodb://stangricki:password-2@ds237748.mlab.com:37748/database-2', {
-    useMongoClient: true
+mongoose.connect(
+  "mongodb://stangricki:password-2@ds237748.mlab.com:37748/database-2"
+);
+
+const user = new mongoose.Schema({
+  name: String,
+  surname: String
 });
 
-/*
-testcollection
-{
-    "_id": {
-        "$oid": "5a85c7a5d574957d5b80bfe7"
-    },
-    "name": "Filip",
-    "surname": "Stangricki"
-}
-*/
-
 express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  .use(express.static(path.join(__dirname, "public")))
+  .set("views", path.join(__dirname, "views"))
+  .set("view engine", "ejs")
+  .get("/", (req, res) => {
+    const User = mongoose.model("User", user, "testcollection");
+
+    User.find(function(err, results) {
+      if (err) {
+        throw new Error(err);
+      } else {
+        return res.render("pages/index", { results });
+      }
+    });
+  })
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
