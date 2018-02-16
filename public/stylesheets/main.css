@@ -1,5 +1,19 @@
+* {
+	outline: 1px solid red;
+}
+
 body {
   text-align: center;
   background-color: #666;
   color: #FFF;
+  padding:20px;
+}
+
+section {
+	width: 24%;
+	display: inline-block;
+}
+
+input {
+	color: #000;
 }
