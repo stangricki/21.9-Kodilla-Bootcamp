@@ -6,10 +6,58 @@
 
 <body>
     <h2>Hello world</h2>
-		<pre>
-		<% results.forEach(function(user)  { %>
-			<%= user.name + ' ' + user.surname %>
-		<% }) %>
-		</pre>
+		
+	<section class="insert">
+		<h3>Insert Data</h3>
+		<form action="/insert" method="post">
+			<div class="input">
+				<label for="name">Name</label>
+				<input type="text" id="name" name="name">
+			</div>
+			<div class="input">
+				<label for="surname">Surname</label>
+				<input type="text" id="surname" name="surname">
+			</div>
+			<button class="btn btn-success" type="submit">INSERT</button>
+		</form>
+	</section>
+	<section class="get">
+		<h3>Get Data</h3>
+		<div>
+			<% results.forEach(function(user)  { %>
+			<%= user.name + ' ' + user.surname %><br>
+			<% }) %>
+		</div>
+		<a class="btn btn-primary" href="/get-data">LOAD DATA</a>
+	</section>
+	<section class="update">
+		<h3>Update Data</h3>
+		<form action="/update" method="post">
+			<div class="input">
+				<label for="id">ID</label>
+				<input type="text" id="id" name="id">
+			</div>
+			<div class="input">
+				<label for="name">Name</label>
+				<input type="text" id="name" name="name">
+			</div>
+			<div class="input">
+				<label for="surname">Surname</label>
+				<input type="text" id="surname" name="surname">
+			</div>
+			<button class="btn btn-warning" type="submit">UPDATE</button>
+		</form>
+	</section>
+	</section>
+	<section class="delete">
+		<h3>Delete Data</h3>
+		<form action="/delete" method="post">
+			<div class="input">
+				<label for="id">ID</label>
+				<input type="text" id="id" name="id">
+			</div>
+			<button class="btn btn-danger" type="submit">DELETE</button>
+		</form>
+	</section>
 </body>
 </html>
