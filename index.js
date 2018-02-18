@@ -28,9 +28,33 @@ express()
     res.redirect('/');
   })
   // on INSERT button
-  .post("/insert", (req, res) => {
-
-      res.send('')})
+  .post("/insert", (req, res, next) => {
+    // TUTAJ!!!!!!!
+    var item = {
+      name: req.body.name,
+      surname: req.body.surname
+    };
+    User.insert(item)
+    res.redirect('/');
+  })
+  // on UPDATE button
+  .post("/update", (req, res, next) => {
+    var item = {
+      name: req.body.name,
+      surname: req.body.surname,
+      id: ''//?????
+    }
+    User.update(item)
+    res.redirect('/');
+  })
+  // on DELETE button
+  .post("/delete", (req, res, next) => {
+    var item = {
+      id: ''//?????
+    };
+    User.delete(item)
+    res.redirect('/');
+  })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 

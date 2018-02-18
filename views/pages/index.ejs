@@ -61,3 +61,28 @@
 	</section>
 </body>
 </html>
+.post("/insert", (req, res, next) => {
+    // TUTAJ!!!!!!!
+    var item = {
+      name: req.body.name,
+      surname: req.body.surname
+    };
+    User.insert(item)
+    res.redirect('/');
+  })
+  .post("/update", (req, res, next) => {
+    var item = {
+      name: req.body.name,
+      surname: req.body.surname,
+      id: ''//?????
+    }
+    User.update(item)
+    res.redirect('/');
+  })
+  .post("/delete", (req, res, next) => {
+    var item = {
+      id: ''//?????
+    };
+    User.delete(item)
+    res.redirect('/');
+  })
