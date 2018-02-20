@@ -25,7 +25,7 @@
 		<h3>Read Data</h3>
 		<div>
 			<% results.forEach(function(user)  { %>
-			<%= user.name + ' ' + user.surname /* + ' ID: ' + user.id --> */ %><br>
+			<%= user.name + ' ' + user.surname + ' ID: ' + user.id %><br>
 			<% }) %>
 		</div>
 		<a class="btn btn-primary" href="/get-data">READ</a>
