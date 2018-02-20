@@ -5,10 +5,10 @@
 </head>
 
 <body>
-    <h2>Hello world</h2>
+    <h2>CRUD (Create Read Update Delete)</h2>
 		
 	<section class="insert">
-		<h3>Insert Data</h3>
+		<h3>Create Data</h3>
 		<form action="/insert" method="post">
 			<div class="input">
 				<label for="name">Name</label>
@@ -18,17 +18,17 @@
 				<label for="surname">Surname</label>
 				<input type="text" id="surname" name="surname">
 			</div>
-			<button class="btn btn-success" type="submit">INSERT</button>
+			<button class="btn btn-success" type="submit">ADD</button>
 		</form>
 	</section>
 	<section class="get">
-		<h3>Get Data</h3>
+		<h3>Read Data</h3>
 		<div>
 			<% results.forEach(function(user)  { %>
-			<%= user.name + ' ' + user.surname %><br>
+			<%= user.name + ' ' + user.surname /* + ' ID: ' + user.id --> */ %><br>
 			<% }) %>
 		</div>
-		<a class="btn btn-primary" href="/get-data">LOAD DATA</a>
+		<a class="btn btn-primary" href="/get-data">REFRESH</a>
 	</section>
 	<section class="update">
 		<h3>Update Data</h3>
@@ -61,28 +61,3 @@
 	</section>
 </body>
 </html>
-.post("/insert", (req, res, next) => {
-    // TUTAJ!!!!!!!
-    var item = {
-      name: req.body.name,
-      surname: req.body.surname
-    };
-    User.insert(item)
-    res.redirect('/');
-  })
-  .post("/update", (req, res, next) => {
-    var item = {
-      name: req.body.name,
-      surname: req.body.surname,
-      id: ''//?????
-    }
-    User.update(item)
-    res.redirect('/');
-  })
-  .post("/delete", (req, res, next) => {
-    var item = {
-      id: ''//?????
-    };
-    User.delete(item)
-    res.redirect('/');
-  })
